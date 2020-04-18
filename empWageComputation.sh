@@ -36,6 +36,6 @@ then
 elif [ $portalRandom == $partTime ]
 then
     # part time
-    workingHours=officePartTimeHours
+    workingHours=$officePartTimeHours
 fi
 totalWage=$(($workingHours * $wagePerHour))
