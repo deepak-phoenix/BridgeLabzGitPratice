@@ -55,8 +55,9 @@ while (( $totalWorkingHours < 100 & $countOfDays < 20 ))
 do
     randomGen 3
     workingHoursFun
+    countingFun
     totalWage=$(($workingHours * $wagePerHour))
     dailyWages[$countOfDays]=$totalWage
     monthlyWages=$(($monthlyWages + $totalWage))
-    countingFun
+
 done
