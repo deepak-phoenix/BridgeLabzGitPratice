@@ -7,10 +7,13 @@ partTime=1
 wagePerHour=20
 officeFullTimeHours=8
 officePartTimeHours=4
+daysPerMonth=20
+
 workingHours=0
 totalWage=0
 monthlyWages=0
-daysPerMonth=20
+countOfDays=0
+totalWorkingHours=0
 
 # portals
 portalRandom=0
@@ -25,7 +28,7 @@ randomGen(){
 }
 
 # brians
-for ((counter=0; counter < $daysPerMonth; counter++))
+while (( $totalWorkingHours < 100 & $countOfDays < 20 ))
 do
     randomGen 3
     case $portalRandom in
@@ -42,6 +45,8 @@ do
             workingHours=0
         ;;
     esac
+    totalWorkingHours=$(($totalWorkingHours + workingHours))
+    countOfDays=$(($countOfDays + 1))
     totalWage=$(($workingHours * $wagePerHour))
     monthlyWages=$(($monthlyWages + $totalWage))
 done
