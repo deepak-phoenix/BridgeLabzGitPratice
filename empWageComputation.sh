@@ -25,17 +25,19 @@ randomGen(){
 
 # brians
 randomGen 3
-if [ $portalRandom == $fullTime ]
-then
-    # full time
-    workingHours=$officeFullTimeHours
-elif [ $portalRandom == $absent ]
-then
-    # absent
-    workingHours=0
-elif [ $portalRandom == $partTime ]
-then
-    # part time
-    workingHours=$officePartTimeHours
-fi
+
+case $portalRandom in
+    $fullTime)
+        # full time
+        workingHours=$officeFullTimeHours
+    ;;
+    $partTime)
+        # part time
+        workingHours=$officePartTimeHours
+    ;;
+    $absent)
+        # absent
+        workingHours=0
+    ;;
+esac
 totalWage=$(($workingHours * $wagePerHour))
