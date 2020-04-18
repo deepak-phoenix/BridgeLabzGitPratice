@@ -9,7 +9,8 @@ officeFullTimeHours=8
 officePartTimeHours=4
 workingHours=0
 totalWage=0
-
+monthlyWages=0
+daysPerMonth=20
 
 # portals
 portalRandom=0
@@ -24,20 +25,23 @@ randomGen(){
 }
 
 # brians
-randomGen 3
-
-case $portalRandom in
-    $fullTime)
-        # full time
-        workingHours=$officeFullTimeHours
-    ;;
-    $partTime)
-        # part time
-        workingHours=$officePartTimeHours
-    ;;
-    $absent)
-        # absent
-        workingHours=0
-    ;;
-esac
-totalWage=$(($workingHours * $wagePerHour))
+for ((counter=0; counter < $daysPerMonth; counter++))
+do
+    randomGen 3
+    case $portalRandom in
+        $fullTime)
+            # full time
+            workingHours=$officeFullTimeHours
+        ;;
+        $partTime)
+            # part time
+            workingHours=$officePartTimeHours
+        ;;
+        $absent)
+            # absent
+            workingHours=0
+        ;;
+    esac
+    totalWage=$(($workingHours * $wagePerHour))
+    monthlyWages=$(($monthlyWages + $totalWage))
+done
