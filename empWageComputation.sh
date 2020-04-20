@@ -3,6 +3,10 @@
 # variables
 present=1
 absent=0
+wagePerHour=20
+officeHours=8
+workingHours=0
+totalWage=0
 
 
 # portals
@@ -21,10 +25,11 @@ randomGen(){
 randomGen 2
 if [ $portalRandom == $present ]
 then
-    # Part time
-    echo "Present"
+    # present
+    workingHours=$officeHours
 elif [ $portalRandom == $absent ]
 then
     # absent
-    echo "absent"
+    workingHours=0
 fi
+totalWage=$(($workingHours * $wagePerHour))
