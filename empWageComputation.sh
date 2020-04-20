@@ -22,7 +22,9 @@ randomGen 2
 if [ $portalRandom == $present ]
 then
     # Part time
+    echo "Present"
 elif [ $portalRandom == $absent ]
 then
     # absent
+    echo "absent"
 fi
