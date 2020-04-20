@@ -1,10 +1,12 @@
 #!/bin/bash -x
 
 # variables
-present=1
+fullTime=2
 absent=0
+partTime=1
 wagePerHour=20
-officeHours=8
+officeFullTimeHours=8
+officePartTimeHours=4
 workingHours=0
 totalWage=0
 
@@ -22,14 +24,18 @@ randomGen(){
 }
 
 # brians
-randomGen 2
-if [ $portalRandom == $present ]
+randomGen 3
+if [ $portalRandom == $fullTime ]
 then
-    # present
-    workingHours=$officeHours
+    # full time
+    workingHours=$officeFullTimeHours
 elif [ $portalRandom == $absent ]
 then
     # absent
     workingHours=0
+elif [ $portalRandom == $partTime ]
+then
+    # part time
+    workingHours=$officePartTimeHours
 fi
 totalWage=$(($workingHours * $wagePerHour))
