@@ -22,15 +22,7 @@ portalRandom=0
 
 # functions
 
-randomGen(){
-    local range=$1
-    portalRandom=$(($RANDOM % $range))
-}
-
-# brians
-while (( $totalWorkingHours < 100 & $countOfDays < 20 ))
-do
-    randomGen 3
+workingHoursFun(){
     case $portalRandom in
         $fullTime)
             # full time
@@ -45,8 +37,24 @@ do
             workingHours=0
         ;;
     esac
+}
+
+countingFun(){
     totalWorkingHours=$(($totalWorkingHours + workingHours))
     countOfDays=$(($countOfDays + 1))
+}
+
+randomGen(){
+    local range=$1
+    portalRandom=$(($RANDOM % $range))
+}
+
+# brians
+while (( $totalWorkingHours < 100 & $countOfDays < 20 ))
+do
+    randomGen 3
+    workingHoursFun
+    countingFun
     totalWage=$(($workingHours * $wagePerHour))
     monthlyWages=$(($monthlyWages + $totalWage))
 done
